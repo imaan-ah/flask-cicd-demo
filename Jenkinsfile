@@ -21,7 +21,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-password', url: '']) {
+                withDockerRegistry([credentialsId: 'dockerhub-password', variable: 'DOCKER_PASSWORD', url: '']) {
                     sh 'docker push $DOCKER_HUB_USER/$IMAGE_NAME:latest'
                 }
             }
